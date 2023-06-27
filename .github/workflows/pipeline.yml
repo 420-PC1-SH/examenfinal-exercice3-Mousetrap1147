@@ -1,0 +1,24 @@
+# Voici ce que vous devez faire dans le pipeline : 
+# - Faire installer les dépendances
+# - Faire builder l'application avec npm (regarder ce qui est disponible dans le fichier package.json)
+# - Rouler les tests unitaires
+name: Examen
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: npm install
+
+      - run: npm test
